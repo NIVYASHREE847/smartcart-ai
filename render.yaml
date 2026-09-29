@@ -9,19 +9,14 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.12.7
-      - key: DATABASE_URL
-        fromDatabase:
-          name: smartcart-db
-          property: connectionString
+      # DATABASE_URL is optional. Without it the API uses SQLite, which is re-seeded from the CSVs on every
+      # restart/redeploy (app-created users and orders are not kept). For persistence, add DATABASE_URL in the
+      # Render dashboard (Supabase or an existing Render Postgres connection string).
       - key: JWT_SECRET
         generateValue: true
       - key: CORS_ORIGINS
-        sync: false
+        value: https://smartcart-ai-woad.vercel.app
       - key: CORS_ORIGIN_REGEX
         value: https://.*\.vercel\.app
       - key: USE_EMBEDDINGS
         value: "0"
-
-databases:
-  - name: smartcart-db
-    plan: free
