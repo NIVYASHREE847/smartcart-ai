@@ -1,5 +1,7 @@
 # SmartCart AI – Intelligent E-Commerce Platform Using Machine Learning
 
+**Live demo:** https://smartcart-ai-woad.vercel.app · **API:** https://smartcart-ai-api-fjv8.onrender.com/api/health
+
 A working e-commerce MVP. It has a React storefront, a FastAPI backend and three ML components: hybrid recommendations, semantic search and churn prediction.
 
 ## Features
@@ -128,10 +130,10 @@ Docker option: `docker compose up` (Postgres + API + Vite).
 
 **Backend and database on Render**
 1. Push this folder to a GitHub repository.
-2. In Render, choose **New → Blueprint** and select the repository. `render.yaml` creates the `smartcart-ai-api` web service and the `smartcart-db` Postgres database, and it generates `JWT_SECRET`.
+2. In Render, choose **New → Blueprint** and select the repository. `render.yaml` creates the `smartcart-ai-api` web service and generates `JWT_SECRET`.
 3. Set `CORS_ORIGINS` to your Vercel URL. Check `https://<service>.onrender.com/api/health`.
 
-To use Supabase instead, set `DATABASE_URL` to the Supabase connection string (the pooler URI).
+The blueprint does not create a database, because Render's free plan allows only one Postgres per account. Without `DATABASE_URL` the API uses SQLite and re-seeds from the CSVs on every restart. To keep data, set `DATABASE_URL` to a Supabase pooler URI or a Render Postgres connection string.
 
 **Frontend on Vercel**
 1. Import the repository and set **Root Directory** to `frontend`. The framework preset is Vite.
