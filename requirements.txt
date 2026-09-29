@@ -1,0 +1,11 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+sqlalchemy>=2.0
+psycopg2-binary>=2.9
+python-jose[cryptography]>=3.3
+bcrypt>=4.1
+python-dotenv>=1.0
+numpy>=1.26
+scikit-learn>=1.4
+# Optional (heavier) semantic-search stack. Install and set USE_EMBEDDINGS=1 to enable:
+#   pip install -r requirements-embeddings.txt
